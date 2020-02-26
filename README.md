@@ -9,3 +9,7 @@
 ## Description
 
 Terraform for launching different OS vm's on Ampere
+
+## Files
+
+* [single-vm/main.tf](single-vm/main.tf)
