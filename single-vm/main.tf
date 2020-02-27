@@ -1,9 +1,7 @@
 # Basic template for single OpenStack VM instance with 
 # Cloud-Init Data being supplied via a rendered template.
 
-# OpenStack KeyPair
-
-Create an OpenStack SSH Keypair
+# Create an OpenStack SSH Keypair
 resource "openstack_compute_keypair_v2" "terraform" {
   name       = "terraform"
   public_key = file("${var.ssh_key_file}.pub")
