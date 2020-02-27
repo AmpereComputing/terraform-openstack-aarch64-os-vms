@@ -1,16 +1,15 @@
 variable "region" {
   description = "The the OpenStack region to deploy the network into."
-  default = "RegionOne"
+  default     = "RegionOne"
 }
 
 variable "image" {
   description = "The the OpenStack VM Image to default to when starting multiple virtual machines with terraform"
-  default  = "RancherOS"
 }
 
 variable "flavor" {
   description = "The the OpenStack VM flavor to default to when starting multiple virtual machines with terraform"
-  default = "Tiny"
+  default     = "m1.medium"
 }
 
 variable "ssh_key_file" {
@@ -22,17 +21,11 @@ variable "ssh_user_name" {
 }
 
 variable "pool" {
-  default = "ext-net"
-}
-
-variable "count" {
-  default = 2
+  description = "OpenStack floating ip pool name"
+  default = "public1"
 }
 
 variable "network_name" {
-  default = "cpd-dev-network-1"
-}
-
-variable "instance_prefix" {
-  default = "os-vm"
+  description = "OpenStack network name"
+  default = "demo-net"
 }
