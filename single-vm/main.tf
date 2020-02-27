@@ -38,7 +38,7 @@ output "os_instance_ssh_private_key" {
 # Basic template for single OpenStack VM instance with 
 # Cloud-Init Data being supplied via a rendered template.
 
-data "template_file" "master_cloud_config" {
+data "template_file" "cloud_config" {
   template = "${file("${path.module}/templates/cloud-init.yaml.tpl")}"
   vars = {
     tf_ssh_privkey = "${tls_private_key.os_instance.private_key_pem}"
@@ -46,8 +46,8 @@ data "template_file" "master_cloud_config" {
   }
 }
 
-output "master_cloud_init" {
-  value = "${data.template_file.master_cloud_config.rendered}"
+output "cloud_init" {
+  value = "${data.template_file.cloud_config.rendered}"
 }
 
 resource "openstack_compute_instance_v2" "vm" {
@@ -59,5 +59,5 @@ resource "openstack_compute_instance_v2" "vm" {
   network {
     name = var.network_name
   }
-  user_data    = data.template_file.master_cloud_config.rendered
+  user_data    = data.template_file.cloud_config.rendered
 }
